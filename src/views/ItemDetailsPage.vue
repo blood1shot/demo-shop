@@ -1,37 +1,25 @@
 <template lang="pug">
-.home-wrapper
-  v-app-bar(:elevation="2")
-    template(v-slot:prepend)
-      v-icon(icon="mdi-apple")
-    v-app-bar-title Official Apple reseller
-    template(v-slot:append)
-      v-btn(icon="mdi-cart")
-  .main-page-wrapper
-    app-sidebar
-    .main-page(:class="{ 'main-page_collapsed': collapsed }")
-      router-view
+.details-page-wrapper
+  p Details {{ itemId }}
 </template>
 
 <script lang="ts" setup>
 import { ref, Ref } from "vue";
-import ProductCard from "@/components/ProductCard.vue";
-import AppSidebar from "@/components/common/AppSidebar.vue";
-import { useUIStore } from "@/store/ui";
-import { storeToRefs } from "pinia";
 import itemApi from "@/services/itemApi";
 import { IItem } from "@/types/entities/IItem";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
+const itemId: Ref<number> = ref(Number(route.params.id));
 const items: Ref<IItem[]> = ref([]);
 
 itemApi.getItems().then((res) => {
   items.value = res.data;
   console.log(items.value);
 });
-
-const { collapsed } = storeToRefs(useUIStore());
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .home-wrapper {
   padding-top: 64px;
   .main-page-wrapper {

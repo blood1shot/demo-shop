@@ -1,25 +1,16 @@
 import { RouteRecordRaw } from "vue-router";
+import routesName from "@/utils/constants/routesName";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Landing",
-    component: () =>
-      import(/* webpackChunkName: "landing" */ "../views/LandingView.vue"),
+    name: routesName.home,
+    component: () => import("../views/HomePage.vue"),
   },
   {
-    path: "/login",
-    name: "Login",
-    component: () =>
-      import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
-  },
-  {
-    path: "/registration",
-    name: "Registration",
-    component: () =>
-      import(
-        /* webpackChunkName: "registration" */ "../views/RegistrationView.vue"
-      ),
+    path: "/item/:id",
+    name: routesName.itemDetails,
+    component: () => import("../views/ItemDetailsPage.vue"),
   },
 ];
 

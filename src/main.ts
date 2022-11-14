@@ -8,12 +8,44 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import { PiniaSharedState } from "pinia-shared-state";
 import * as Sentry from "@sentry/vue";
 import { Integrations } from "@sentry/tracing";
+// Vuetify
+import "vuetify/styles";
+import "@mdi/font/css/materialdesignicons.css";
+import "material-design-icons-iconfont/dist/material-design-icons.css";
+import "@fortawesome/fontawesome-free/css/all.css";
+import { createVuetify } from "vuetify";
+import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { fa } from "vuetify/iconsets/fa";
+import { md } from "vuetify/iconsets/md";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
+// Fontawesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+
+const vuetify = createVuetify({
+  components,
+  directives,
+  icons: {
+    defaultSet: "mdi",
+    aliases,
+    sets: {
+      fa,
+      mdi,
+      md,
+    },
+  },
+});
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 pinia.use(PiniaSharedState({ enable: true, initialize: true, type: "native" }));
 
 const app = createApp(App);
+
+app.component("font-awesome-icon", FontAwesomeIcon);
+library.add(fas);
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
@@ -31,4 +63,4 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use(pinia).use(router).mount("#app");
+app.use(pinia).use(router).use(vuetify).mount("#app");

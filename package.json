@@ -21,9 +21,15 @@
     "pinia-shared-state": "^0.2.8",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vuetify": "^3.0.1"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.0",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/vue-fontawesome": "^3.0.2",
+    "@mdi/font": "^7.0.96",
     "@prettier/plugin-pug": "^1.20.1",
     "@types/jest": "^27.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
@@ -46,6 +52,7 @@
     "eslint-plugin-vue-pug": "^0.5.4",
     "jest": "^27.0.5",
     "lint-staged": "^9.5.0",
+    "material-design-icons-iconfont": "^6.7.0",
     "prerender-spa-plugin-next": "^4.2.3",
     "prettier": "^2.4.1",
     "pug": "^3.0.2",

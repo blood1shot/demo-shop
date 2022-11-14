@@ -1,5 +1,7 @@
 <template lang="pug">
-router-view
+v-app
+  MainLayout
 </template>
-
-<style lang="scss"></style>
+<script lang="ts" setup>
+import MainLayout from "@/layouts/MainLayout.vue";
+</script>
