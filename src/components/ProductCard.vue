@@ -3,10 +3,10 @@
   h3 {{ item_name }}
   img(:src="getImgUrl(img_name)")
   p.price.mb1 {{ price }}{{ currency }}
-  app-button.info-btn
-    v-icon(icon="mdi-information")
   router-link(:to="{ name: routesName.itemDetails, params: { id: id } }")
-    app-button.product-btn Add to cart
+    app-button.info-btn
+      v-icon(icon="mdi-information")
+  app-button.product-btn Add to cart
 </template>
 
 <script setup lang="ts">
@@ -57,6 +57,9 @@ const getImgUrl = (img_name: string) => {
     position: absolute;
     top: 5px;
     right: 5px;
+  }
+  a {
+    text-decoration: none;
   }
 }
 </style>

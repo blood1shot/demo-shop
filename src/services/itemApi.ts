@@ -6,4 +6,7 @@ export default {
   getItems(): Promise<AxiosResponse<IItem[]>> {
     return axiosClient.get("items");
   },
+  getItem(id: number): Promise<AxiosResponse<IItem>> {
+    return axiosClient.get(`items/${id}`);
+  },
 };

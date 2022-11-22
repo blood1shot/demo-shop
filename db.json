@@ -4,25 +4,35 @@
       "id": 1,
       "img_name": "iphone-12",
       "item_name": "iPhone 12",
-      "price": 1100
+      "vendor": "SAAS5AS3332",
+      "description": "The iPhone 12 and iPhone 12 Mini are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
+      "price": 1100,
+      "discount": 15
     },
     {
       "id": 2,
       "img_name": "iphone-11",
       "item_name": "iPhone 11",
+      "vendor": "WQWQRQRW1221211E",
+      "description": "The iPhone 11 are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
       "price": 900
     },
     {
       "id": 3,
       "img_name": "iphone-13",
       "item_name": "iPhone 13",
+      "vendor": "HK23KJH121HKJ",
+      "description": "The iPhone 13 and iPhone 13 Mini are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
       "price": 1200
     },
     {
       "id": 4,
       "img_name": "iphone-14-pro-max",
       "item_name": "iPhone 14 Pro Max",
-      "price": 1350
+      "vendor": "MK3M212M1OMI",
+      "description": "The iPhone 14 Pro Max are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
+      "price": 1350,
+      "discount": 10
     }
   ]
 }

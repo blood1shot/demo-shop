@@ -6,15 +6,6 @@
       @click="collapseSidebar"
     )
   .sidebar-list
-    //- router-link.link.mb1(
-    //-   v-for="(link, index) in links",
-    //-   :key="index",
-    //-   :to="{ name: link.route }",
-    //-   active-class="link_active",
-    //-   :class="[{ link_hide: collapsed }]"
-    //- )
-    //-   .icon(:class="link.iconName")
-    //-   .app-subtitle {{ link.name }}
 </template>
 
 <script lang="ts" setup>

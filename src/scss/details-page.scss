@@ -1,0 +1,90 @@
+.game-container {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 108px);
+  background-color: #fff;
+  border-radius: 16px;
+  .smaller {
+    padding: 24px 100px 24px 52px;
+    .details-title {
+      font-size: 24px;
+      line-height: 38px;
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 24px 48px 0 48px;
+      .details {
+        .price-and-button {
+          display: flex;
+          align-items: center;
+          position: relative;
+          .discount {
+            position: absolute;
+            left: 2px;
+            top: -8px;
+            display: flex;
+            align-items: center;
+            height: 20px;
+            .discount-price {
+              color: gray;
+              font-size: 14px;
+              text-decoration: line-through;
+            }
+            .discount-persentage {
+              color: white;
+              font-size: 10px;
+              font-weight: 700;
+              padding: 2px 4px;
+              background: #EB1D36;
+              border-radius: 1.2rem;
+              margin-left: 10px;
+            }
+          }
+        }
+        .description-text {
+          max-width: 500px;
+          line-height: 30px;
+          margin-bottom: 24px;
+        }
+        .add-to-cart {
+          max-width: 220px;
+          margin-left: 35px;
+        }
+      }
+      .content-img-wrapper {
+        text-align: center;
+        width: 100%;
+        .content-img {
+          width: 70%;
+        }
+      }
+      .icon {
+        display: inline-flex;
+        flex: 0 0 24px;
+      }
+      .details-header {
+        display: flex;
+        justify-content: space-between;
+        .edit {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          .app-link {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+  .inner {
+    position: relative;
+    padding: 10px 28px 30px 28px;
+    min-height: calc(100vh - 108px);
+  }
+}
