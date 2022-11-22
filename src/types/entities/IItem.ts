@@ -6,4 +6,5 @@ export interface IItem {
   description: string;
   price: number;
   discount?: number;
+  quantity: number;
 }

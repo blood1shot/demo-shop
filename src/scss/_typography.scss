@@ -25,6 +25,7 @@
   margin: 0;
 }
 .app-h3 {
+  text-decoration: none;
   font-family: "General Sans", sans-serif;
   font-size: 34px;
   font-weight: 500;
@@ -75,7 +76,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 22px;
-  color: #3057DF;
+  color: var(--text-color);
   text-decoration: none;
 }
 .small-title {

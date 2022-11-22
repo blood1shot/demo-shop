@@ -12,6 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     name: routesName.itemDetails,
     component: () => import("../views/ItemDetailsPage.vue"),
   },
+  {
+    path: "/checkout",
+    name: routesName.checkoutPage,
+    component: () => import("../views/CheckoutPage.vue"),
+  },
 ];
 
 export default routes;

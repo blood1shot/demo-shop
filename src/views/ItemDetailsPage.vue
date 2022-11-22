@@ -17,7 +17,7 @@
             span.discount-persentage -{{ item.discount }}%
           p.app-price(v-if="item.discount") {{ item.price - item.price * (item.discount / 100) }}$
           p.app-price(v-else) {{ item.price }}$
-          app-button.add-to-cart Add to cart
+          app-button.add-to-cart(@click="addToCart(item)") Add to cart
 </template>
 
 <script lang="ts" setup>
@@ -28,11 +28,13 @@ import { useRoute } from "vue-router";
 import AppBreadcrumb from "@/components/common/AppBreadcrumb.vue";
 import AppButton from "@/components/common/AppButton.vue";
 import { IBreadCrumbItem } from "@/types/entities/IBreadCrumbItem";
+import { useCartStore } from "@/store/cart";
 import routesName from "@/utils/constants/routesName";
 
 const route = useRoute();
 const itemId: Ref<number> = ref(Number(route.params.id));
 const item: Ref<IItem | undefined> = ref();
+const cartStore = useCartStore();
 
 itemApi.getItem(itemId.value).then((res) => {
   item.value = res.data;
@@ -51,6 +53,10 @@ const breadcrumbs: ComputedRef<IBreadCrumbItem[]> = computed(() => [
 
 const getImgUrl = () => {
   return require(`@/assets/images/${item.value?.img_name}.png`);
+};
+
+const addToCart = (item: IItem) => {
+  cartStore.addToCart(item);
 };
 </script>
 

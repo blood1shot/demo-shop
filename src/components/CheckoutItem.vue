@@ -1,12 +1,15 @@
 <template lang="pug">
-.card-wrapper
-  h3 {{ item.item_name }}
-  img(:src="getImgUrl(item.img_name)")
-  p.price.mb1 {{ item.price }}$
-  router-link(:to="{ name: routesName.itemDetails, params: { id: item.id } }")
-    app-button.info-btn
-      v-icon(icon="mdi-information")
-  app-button.product-btn(@click="addToCart(item)") Add to cart
+.card-wrapper.mb2
+  .item-title
+    img(:src="getImgUrl(item.img_name)")
+    router-link(
+      :to="{ name: routesName.itemDetails, params: { id: item.id } }"
+    )
+      p.app-h3 {{ item.item_name }}
+  .item-price
+    p.app-price {{ item.price }}$
+    app-button(@click="removeFromCart(item.id)")
+      v-icon(icon="mdi-trash-can")
 </template>
 
 <script setup lang="ts">
@@ -28,24 +31,39 @@ const cartStore = useCartStore();
 const getImgUrl = (img_name: string) => {
   return require(`@/assets/images/${img_name}.png`);
 };
-const addToCart = (item: IItem) => {
-  cartStore.addToCart(item);
+const removeFromCart = (id: number) => {
+  cartStore.removeFromCart(id);
 };
 </script>
 <style lang="scss" scoped>
 .card-wrapper {
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
   text-align: center;
   border: 2px solid var(--text-color);
   border-radius: 8px;
-  width: 270px;
-  height: 400px;
+  width: 100%;
+  align-items: center;
   position: relative;
+  .item-title {
+    display: flex;
+    align-items: center;
+  }
+  .item-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .app-price {
+      margin-right: 32px;
+      font-size: 30px;
+    }
+  }
   .product-btn {
     max-width: 200px;
   }
   img {
-    width: 210px;
+    width: 80px;
   }
   .info-btn {
     max-width: 40px;

@@ -1,12 +1,6 @@
 <template lang="pug">
 .item-list
-  product-card(
-    v-for="item in items",
-    :id="item.id",
-    :img_name="item.img_name",
-    :item_name="item.item_name",
-    :price="item.price"
-  )
+  product-card(v-for="item in items", :item="item")
 </template>
 
 <script lang="ts" setup>
