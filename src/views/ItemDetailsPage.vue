@@ -36,7 +36,7 @@ const itemId: Ref<number> = ref(Number(route.params.id));
 const item: Ref<IItem | undefined> = ref();
 const cartStore = useCartStore();
 
-itemApi.getItem(itemId.value).then((res) => {
+itemApi.getOne(itemId.value).then((res) => {
   item.value = res.data;
 });
 
@@ -56,7 +56,7 @@ const getImgUrl = () => {
 };
 
 const addToCart = (item: IItem) => {
-  cartStore.addToCart(item);
+  cartStore.addTo(item);
 };
 </script>
 

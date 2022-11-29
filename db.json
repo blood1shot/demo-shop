@@ -2,40 +2,66 @@
   "items": [
     {
       "id": 1,
+      "type": "Phone",
       "img_name": "iphone-12",
       "item_name": "iPhone 12",
       "vendor": "SAAS5AS3332",
       "description": "The iPhone 12 and iPhone 12 Mini are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
-      "price": 1100,
+      "price": 900,
       "discount": 15,
       "quantity": 1
     },
     {
       "id": 2,
+      "type": "Phone",
       "img_name": "iphone-11",
       "item_name": "iPhone 11",
       "vendor": "WQWQRQRW1221211E",
       "description": "The iPhone 11 are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
-      "price": 900,
+      "price": 700,
       "quantity": 1
     },
     {
       "id": 3,
+      "type": "Phone",
       "img_name": "iphone-13",
       "item_name": "iPhone 13",
       "vendor": "HK23KJH121HKJ",
       "description": "The iPhone 13 and iPhone 13 Mini are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
-      "price": 1200,
+      "price": 1000,
       "quantity": 1
     },
     {
       "id": 4,
+      "type": "Phone",
       "img_name": "iphone-14-pro-max",
       "item_name": "iPhone 14 Pro Max",
       "vendor": "MK3M212M1OMI",
       "description": "The iPhone 14 Pro Max are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
       "price": 1350,
       "discount": 10,
+      "quantity": 1
+    },
+    {
+      "id": 5,
+      "type": "Notebook",
+      "img_name": "macbook-pro-13",
+      "item_name": "MacBook Pro 13",
+      "vendor": "CMNCNDPP51G1V2",
+      "description": "The iPhone 14 Pro Max are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
+      "price": 1550,
+      "discount": 8,
+      "quantity": 1
+    },
+    {
+      "id": 6,
+      "type": "Watch",
+      "img_name": "apple-watch-se",
+      "item_name": "Apple Watch SE",
+      "vendor": "OPOIH23FC13RF1",
+      "description": "The iPhone 14 Pro Max are a range of smartphones designed, developed, and marketed by Apple Inc. They are the fourteenth-generation, affordable flagship iPhones, succeeding the iPhone 11",
+      "price": 310,
+      "discount": 5,
       "quantity": 1
     }
   ]

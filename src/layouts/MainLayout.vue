@@ -27,7 +27,7 @@ import { IItem } from "@/types/entities/IItem";
 
 const items: Ref<IItem[]> = ref([]);
 
-itemApi.getItems().then((res) => {
+itemApi.getAll().then((res) => {
   items.value = res.data;
   console.log(items.value);
 });

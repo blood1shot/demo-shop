@@ -1,22 +1,50 @@
 <template lang="pug">
 .app-sidebar(:class="{ 'app-sidebar_collapsed': collapsed }")
   .sidebar-head
+    .filters-head
+      v-icon.filter-icon(icon="mdi-filter")
+      p(v-if="!collapsed") Filters
     .icon.icon_collapse(
       :class="{ icon_collapsed: collapsed }",
       @click="collapseSidebar"
     )
   .sidebar-list
+    label.checkbox.mb1 Watch
+      input(v-model="checkbox", type="checkbox", value="Watch")
+      span.checkmark
+    label.checkbox.mb1 Phone
+      input(v-model="checkbox", type="checkbox", value="Phone")
+      span.checkmark
+    label.checkbox.mb1 Notebook
+      input(v-model="checkbox", type="checkbox", value="Notebook")
+      span.checkmark
 </template>
 
 <script lang="ts" setup>
+import { Ref, ref, watch } from "vue";
 import { useUIStore } from "@/store/ui";
 import { storeToRefs } from "pinia";
+import { FilterEnum } from "@/utils/enum/FilterEnum";
+import { useFilterStore } from "@/store/filter";
 
+const filterStore = useFilterStore();
 const { collapsed } = storeToRefs(useUIStore());
 const { collapseSidebar } = useUIStore();
+const checkbox: Ref<FilterEnum[]> = ref([]);
+const checked: FilterEnum[] = filterStore.checked;
+
+watch(
+  () => checkbox,
+  (value) => {
+    console.log(value);
+    filterStore.replaceAll(value.value);
+  },
+  { immediate: true, deep: true }
+);
 </script>
 
 <style lang="scss" scoped>
+@import "src/scss/checkbox.scss";
 .logo {
   width: 112px;
   height: 31px;
@@ -40,6 +68,7 @@ const { collapseSidebar } = useUIStore();
   }
 }
 .sidebar-list {
+  color: white;
   margin-top: 35px;
   .link {
     transition: all ease-in-out 200ms;
@@ -78,6 +107,13 @@ const { collapseSidebar } = useUIStore();
     align-items: center;
     display: flex;
     justify-content: space-between;
+    .filter-icon {
+      color: #747474;
+    }
+    .filters-head {
+      color: #747474;
+      display: flex;
+    }
   }
 }
 

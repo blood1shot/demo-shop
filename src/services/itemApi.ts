@@ -3,10 +3,10 @@ import { AxiosResponse } from "axios";
 import { IItem } from "@/types/entities/IItem";
 
 export default {
-  getItems(): Promise<AxiosResponse<IItem[]>> {
+  getAll(): Promise<AxiosResponse<IItem[]>> {
     return axiosClient.get("items");
   },
-  getItem(id: number): Promise<AxiosResponse<IItem>> {
+  getOne(id: number): Promise<AxiosResponse<IItem>> {
     return axiosClient.get(`items/${id}`);
   },
 };

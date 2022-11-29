@@ -7,8 +7,9 @@
         .edit
           router-link.app-link(:to="{ name: routesName.home }")
             app-button Continue shopping
-      checkout-item(v-for="item in items", :item="item")
+      checkout-item(v-for="item in items", :key="item.id", :item="item")
       p.empty-cart(v-if="items.length === 0") Cart is empty
+      p.total.app-h4(v-else) Total: {{ totalCost }}
 </template>
 
 <script lang="ts" setup>
@@ -21,6 +22,7 @@ import CheckoutItem from "@/components/CheckoutItem.vue";
 
 const cartStore = useCartStore();
 const items: ComputedRef<IItem[] | undefined> = computed(() => cartStore.cart);
+const totalCost: ComputedRef<number> = computed(() => cartStore.totalCost);
 </script>
 
 <style scoped lang="scss">
@@ -42,6 +44,9 @@ const items: ComputedRef<IItem[] | undefined> = computed(() => cartStore.cart);
     }
     .content-wrapper {
       padding: 24px 48px 0 48px;
+      .total {
+        text-align: right;
+      }
       .empty-cart {
         border: 2px solid black;
         border-radius: 8px;

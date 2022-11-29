@@ -18,7 +18,7 @@ import { IItem } from "@/types/entities/IItem";
 interface IProps {
   item?: IItem;
 }
-// eslint-disable-next-line no-undef
+
 const props = withDefaults(defineProps<IProps>(), {
   item: undefined,
 });
@@ -29,7 +29,8 @@ const getImgUrl = (img_name: string) => {
   return require(`@/assets/images/${img_name}.png`);
 };
 const addToCart = (item: IItem) => {
-  cartStore.addToCart(item);
+  cartStore.addTo(item);
+  console.log(item.quantity);
 };
 </script>
 <style lang="scss" scoped>
