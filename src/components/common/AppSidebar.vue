@@ -8,16 +8,20 @@
       :class="{ icon_collapsed: collapsed }",
       @click="collapseSidebar"
     )
-  .sidebar-list
+  .sidebar-list.mb5(v-if="!collapsed")
     label.checkbox.mb1 Watch
       input(v-model="checkbox", type="checkbox", value="Watch")
       span.checkmark
     label.checkbox.mb1 Phone
       input(v-model="checkbox", type="checkbox", value="Phone")
       span.checkmark
-    label.checkbox.mb1 Notebook
+    label.checkbox Notebook
       input(v-model="checkbox", type="checkbox", value="Notebook")
       span.checkmark
+  .range-filter(v-if="!collapsed")
+    p.range-filter-p.app-subtitle Select price range:
+    p.range-filter-p.app-subtitle 0-{{ priceFilter }}$
+    app-select(v-model="priceFilter", :min="0", :max="1600")
 </template>
 
 <script lang="ts" setup>
@@ -26,18 +30,28 @@ import { useUIStore } from "@/store/ui";
 import { storeToRefs } from "pinia";
 import { FilterEnum } from "@/utils/enum/FilterEnum";
 import { useFilterStore } from "@/store/filter";
+import AppSelect from "@/components/common/AppSelect.vue";
 
 const filterStore = useFilterStore();
 const { collapsed } = storeToRefs(useUIStore());
 const { collapseSidebar } = useUIStore();
 const checkbox: Ref<FilterEnum[]> = ref([]);
 const checked: FilterEnum[] = filterStore.checked;
+const priceFilter: Ref<number> = ref(0);
 
 watch(
   () => checkbox,
   (value) => {
-    console.log(value);
     filterStore.replaceAll(value.value);
+  },
+  { immediate: true, deep: true }
+);
+
+watch(
+  () => priceFilter,
+  (value) => {
+    filterStore.changePrice(value.value);
+    console.log(filterStore.price);
   },
   { immediate: true, deep: true }
 );
@@ -100,6 +114,9 @@ watch(
   width: 216px;
   background-color: #000;
   z-index: 2;
+  .range-filter-p {
+    color: white;
+  }
   &.app-sidebar_collapsed {
     width: 94px;
   }
