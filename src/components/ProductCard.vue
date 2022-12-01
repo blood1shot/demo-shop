@@ -2,7 +2,12 @@
 .card-wrapper
   h3 {{ item.item_name }}
   img(:src="getImgUrl(item.img_name)")
-  p.price.mb1 {{ item.price }}$
+  .price
+    .discount(v-if="item.discount")
+      p.discount-price {{ item.price }}
+      span.discount-persentage -{{ item.discount }}%
+    p.app-price(v-if="item.discount") {{ item.price - item.price * (item.discount / 100) }}$
+    p.app-price(v-else) {{ item.price }}$
   router-link(:to="{ name: routesName.itemDetails, params: { id: item.id } }")
     app-button.info-btn
       v-icon(icon="mdi-information")
@@ -42,6 +47,29 @@ const addToCart = (item: IItem) => {
   width: 270px;
   height: 400px;
   position: relative;
+  .discount {
+    // position: absolute;
+    // left: 2px;
+    // top: -8px;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    .discount-price {
+      margin: 0;
+      color: gray;
+      font-size: 14px;
+      text-decoration: line-through;
+    }
+    .discount-persentage {
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 4px;
+      background: #eb1d36;
+      border-radius: 1.2rem;
+      margin-left: 10px;
+    }
+  }
   .product-btn {
     max-width: 200px;
   }
@@ -58,6 +86,11 @@ const addToCart = (item: IItem) => {
   }
   a {
     text-decoration: none;
+  }
+  .price {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
 }
 </style>
