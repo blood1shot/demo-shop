@@ -1,23 +1,24 @@
 <template lang="pug">
 .home-wrapper
   v-app-bar(:elevation="2")
-    template(v-slot:prepend)
+    template(#prepend)
       v-icon(icon="mdi-apple")
     v-app-bar-title Official Apple reseller
-    template(v-slot:append)
+    template(#append)
       span.amount-of-items(v-if="cartStore.cart.length") {{ itemsInCart }}
       router-link.app-link(:to="{ name: routesName.checkoutPage }")
         v-btn(icon="mdi-cart")
   .main-page-wrapper
     app-sidebar
     .main-page(:class="{ 'main-page_collapsed': collapsed }")
-      router-view
+      router-view(v-slot="{ Component }")
+        transition(name="fade", mode="out-in")
+          component(:is="Component")
 </template>
 
 <script lang="ts" setup>
 import { ref, Ref, computed, ComputedRef } from "vue";
 import routesName from "@/utils/constants/routesName";
-import ProductCard from "@/components/ProductCard.vue";
 import AppSidebar from "@/components/common/AppSidebar.vue";
 import { useUIStore } from "@/store/ui";
 import { useCartStore } from "@/store/cart";

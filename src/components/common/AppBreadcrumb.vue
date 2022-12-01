@@ -12,7 +12,7 @@ import { IBreadCrumbItem } from "@/types/entities/IBreadCrumbItem";
 interface Props {
   items: IBreadCrumbItem[];
 }
-// eslint-disable-next-line no-undef
+
 withDefaults(defineProps<Props>(), {
   items: () => [],
 });

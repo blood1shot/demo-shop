@@ -21,7 +21,7 @@
   .range-filter(v-if="!collapsed")
     p.range-filter-p.app-subtitle Select price range:
     p.range-filter-p.app-subtitle 0-{{ priceFilter }}$
-    app-select(v-model="priceFilter", :min="0", :max="1600")
+    app-range-slider(v-model="priceFilter", :min="0", :max="1600")
 </template>
 
 <script lang="ts" setup>
@@ -30,30 +30,35 @@ import { useUIStore } from "@/store/ui";
 import { storeToRefs } from "pinia";
 import { FilterEnum } from "@/utils/enum/FilterEnum";
 import { useFilterStore } from "@/store/filter";
-import AppSelect from "@/components/common/AppSelect.vue";
+import AppRangeSlider from "@/components/common/AppRangeSlider.vue";
+import useDebounce from "@/composables/useDebounce";
 
+const { debounce } = useDebounce();
 const filterStore = useFilterStore();
 const { collapsed } = storeToRefs(useUIStore());
 const { collapseSidebar } = useUIStore();
 const checkbox: Ref<FilterEnum[]> = ref([]);
-const checked: FilterEnum[] = filterStore.checked;
 const priceFilter: Ref<number> = ref(0);
 
 watch(
-  () => checkbox,
+  () => checkbox.value,
   (value) => {
-    filterStore.replaceAll(value.value);
+    filterStore.replaceAll(value);
   },
-  { immediate: true, deep: true }
+  { immediate: true }
 );
 
 watch(
-  () => priceFilter,
-  (value) => {
-    filterStore.changePrice(value.value);
-    console.log(filterStore.price);
+  () => priceFilter.value,
+  (newV, oldV) => {
+    debounce(() => {
+      if (newV !== oldV) {
+        filterStore.changePrice(newV);
+        console.log(filterStore.price);
+      }
+    }, 500);
   },
-  { immediate: true, deep: true }
+  { immediate: true }
 );
 </script>
 

@@ -10,3 +10,21 @@ html, body, #app {
 body.no-scroll {
   overflow: hidden;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.circular-progress-wrapper {
+  margin-top: 15%;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

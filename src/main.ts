@@ -23,6 +23,9 @@ import * as directives from "vuetify/directives";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+// Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap";
 
 const vuetify = createVuetify({
   components,
@@ -44,7 +47,7 @@ pinia.use(PiniaSharedState({ enable: true, initialize: true, type: "native" }));
 
 const app = createApp(App);
 
-app.component("font-awesome-icon", FontAwesomeIcon);
+app.component("FontAwesomeIcon", FontAwesomeIcon);
 library.add(fas);
 
 if (process.env.NODE_ENV === "production") {

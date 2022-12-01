@@ -17,14 +17,14 @@ interface IProps {
   small?: boolean;
   type?: string;
 }
-// eslint-disable-next-line no-undef
+
 const props = withDefaults(defineProps<IProps>(), {
   outline: false,
   white: false,
   disabled: false,
   type: "",
 });
-// eslint-disable-next-line no-undef
+
 const emit = defineEmits(["on-click"]);
 
 const clickHandler = (): void => {

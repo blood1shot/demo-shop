@@ -19,7 +19,7 @@ interface IProps {
   item?: IItem;
 }
 
-const props = withDefaults(defineProps<IProps>(), {
+withDefaults(defineProps<IProps>(), {
   item: undefined,
 });
 

@@ -25,8 +25,8 @@ import { IItem } from "@/types/entities/IItem";
 interface IProps {
   item?: IItem;
 }
-// eslint-disable-next-line no-undef
-const props = withDefaults(defineProps<IProps>(), {
+
+withDefaults(defineProps<IProps>(), {
   item: undefined,
 });
 
