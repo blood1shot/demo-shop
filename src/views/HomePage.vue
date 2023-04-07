@@ -128,4 +128,7 @@ getItems();
 .carousel-control-prev {
   width: 5%;
 }
+.carousel-control-next {
+  width: 5%;
+}
 </style>
